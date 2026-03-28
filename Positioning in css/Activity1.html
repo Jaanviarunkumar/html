@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>positioning</title>
+        <style>
+            div {
+                right: 30px;
+                border: 3px solid black;
+            }
+            div.sticky {
+                position: sticky;
+                top: 0;
+                background-color: lightblue;
+                padding: 10px;
+                border: 2px solid blue;
+            }
+            div.fixed {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                background-color: lightgreen;
+                padding: 10px;
+                border: 2px solid green;
+            }
+           div .relative {
+                position: relative;
+                background-color: lightyellow;
+                padding: 10px;
+                border: 2px solid orange;
+                margin-top: 20px;
+            }
+            div.absolute {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background-color: lightcoral;
+                padding: 10px;
+                border: 2px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Positioning in css</h1>
+        <div>
+            div with no position property
+        </div>
+        <div class="sticky">
+            div with position: sticky
+        </div>
+        <div class="fixed">
+            div with position: fixed
+            </div>
+            <div class="relative">
+            div with position: relative
+            <div class="absolute">
+                div with position: absolute
+
+            </div>
+            </div>
+    </body>
+</html>
