@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Methods and Loops</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        h1 {
+            color: #ff6600;
+            text-align: center;
+        }
+        .box {
+            background-color: #16213e;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #ff6600;
+        }
+        h2 {
+            color: #ff9966;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔢 JavaScript Methods and Loops</h1>
+
+    <!-- Box 1: Random Numbers using Loop -->
+    <div class="box">
+        <h2>🎲 Random Numbers</h2>
+        <p id="randomNumbers"></p>
+    </div>
+
+    <!-- Box 2: Current Date -->
+    <div class="box">
+        <h2>📅 Today's Date</h2>
+        <p id="currentDate"></p>
+    </div>
+
+    <!-- Box 3: Rounded Random Number -->
+    <div class="box">
+        <h2>🔄 Rounded Random Number</h2>
+        <p id="roundedNumber"></p>
+    </div>
+
+    <script>
+        // 1. Random numbers using a loop
+        let randomList = "";
+        for (let i = 1; i <= 5; i++) {
+            let randomNum = Math.random() * 100;
+            randomList += "Number " + i + ": " + randomNum + "<br>";
+        }
+        document.getElementById("randomNumbers").innerHTML = randomList;
+
+        // 2. Current date
+        let today = new Date();
+        document.getElementById("currentDate").innerHTML = "Today is: " + today;
+
+        // 3. Rounded random number
+        let bigRandom = Math.random() * 100;
+        let rounded = Math.round(bigRandom);
+        document.getElementById("roundedNumber").innerHTML =
+            "Original number: " + bigRandom + "<br>Rounded number: " + rounded;
+    </script>
+
+</body>
+</html>
