@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Superhero Squad 🦸‍♀️</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #ff6600;
+            margin-bottom: 30px;
+        }
+        .hero-card {
+            background-color: #16213e;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: none;
+        }
+        .hero-card.active {
+            display: block;
+        }
+        .hero-name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .real-name {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        .phoenixa { border-left: 6px solid #ff6600; }
+        .quailina { border-left: 6px solid #87ceeb; }
+        .flamingana { border-left: 6px solid #ff69b4; }
+        .falconela { border-left: 6px solid #8b4513; }
+
+        .phoenixa .hero-name { color: #ff6600; }
+        .quailina .hero-name { color: #87ceeb; }
+        .flamingana .hero-name { color: #ff69b4; }
+        .falconela .hero-name { color: #cd853f; }
+
+        /* Pagination styling */
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .page-link {
+            background-color: #16213e;
+            color: white;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .page-item.active .page-link {
+            background-color: #ff6600;
+            border-color: #ff6600;
+            color: white;
+        }
+        .page-link:hover {
+            background-color: #ff6600;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🦸‍♀️ Superhero Squad 🦸‍♀️</h1>
+
+        <!-- Phoenixa -->
+        <div class="hero-card phoenixa active" id="hero1">
+            <div class="hero-name">🔥 Phoenixa</div>
+            <div class="real-name">Real Name: Jaanvi</div>
+
+            <div class="section-title">⚡ Powers:</div>
+            <p>Water power (primary), Invisibility, Super strength, Magic and spell casting, Time travel (forbidden, rarely used), Resurrection — rises when defeated!</p>
+
+            <div class="section-title">😤 Weakness:</div>
+            <p>Anger — when Phoenixa gets angry, she causes destruction to the whole city!</p>
+
+            <div class="section-title">💫 Personality:</div>
+            <p>Courageous, brave, and happy. Spreads happiness everywhere she goes. The leader of the squad!</p>
+
+            <div class="section-title">📖 Description:</div>
+            <p>Phoenixa represents the legendary Phoenix bird. She protects the innocent, fights enemies, and always rises from defeat. She is the courageous leader of the superhero squad, spreading happiness everywhere she goes!</p>
+        </div>
+
+        <!-- Quailina -->
+        <div class="hero-card quailina" id="hero2">
+            <div class="hero-name">🐦 Quailina</div>
+            <div class="real-name">Real Name: Madhivadhana</div>
+
+            <div class="section-title">⚡ Powers:</div>
+            <p>Controls the wind, Super hearing, Lives in her own dreamy world!</p>
+
+            <div class="section-title">😤 Weakness:</div>
+            <p>Gets scared easily — but always faces her fears and becomes stronger!</p>
+
+            <div class="section-title">💫 Personality:</div>
+            <p>Sweet, kind, intelligent, and a little funny. Cares deeply for others. Usually lost in her own dreamy world!</p>
+
+            <div class="section-title">📖 Description:</div>
+            <p>Quailina represents the quail bird. She may get scared easily, but she always faces her fears bravely and becomes stronger. She cares deeply for her friends and is always there when needed!</p>
+        </div>
+
+        <!-- Flamingana -->
+        <div class="hero-card flamingana" id="hero3">
+            <div class="hero-name">🦩 Flamingana</div>
+            <div class="real-name">Real Name: Aarna (Phoenixa's sister!)</div>
+
+            <div class="section-title">⚡ Powers:</div>
+            <p>Controls fire, Glitter magic, Creates destructive flames when emotional!</p>
+
+            <div class="section-title">😤 Weakness:</div>
+            <p>Acts silly most of the time which makes others irritated. Sometimes gets really angry and makes everyone around her angry too!</p>
+
+            <div class="section-title">💫 Personality:</div>
+            <p>Sweet, brave, somewhat kind, and funny. Sometimes gets angry and makes others around her feel the same!</p>
+
+            <div class="section-title">📖 Description:</div>
+            <p>Flamingana represents the beautiful pink flamingo bird. She is Phoenixa's sister! She controls fire and glitter magic. When Phoenix gets angry, Flamingana helps cool things down — even though she can cause chaos herself with her fire and glitter powers!</p>
+        </div>
+
+        <!-- Falconela -->
+        <div class="hero-card falconela" id="hero4">
+            <div class="hero-name">🦅 Falconela</div>
+            <div class="real-name">Real Name: Rithvika (Phoenixa's best friend!)</div>
+
+            <div class="section-title">⚡ Powers:</div>
+            <p>Controls rocks, Can create earthquakes, Super courageous!</p>
+
+            <div class="section-title">😤 Weakness:</div>
+            <p>Sitting alone for too long makes her sad and angry — when she gets angry, rocks surround her and she needs her friends to help her!</p>
+
+            <div class="section-title">💫 Personality:</div>
+            <p>Kind, caring, a little funny, and sometimes overdramatic. Courageous but gets emotional when lonely!</p>
+
+            <div class="section-title">📖 Description:</div>
+            <p>Falconela represents the mighty falcon bird. She is Phoenixa's best friend! She can control rocks and even create earthquakes. When she feels lonely and gets angry, rocks surround her — and only her friends can help her break free!</p>
+        </div>
+
+        <!-- Pagination Buttons -->
+        <nav>
+            <ul class="pagination">
+                <li class="page-item active" id="btn1">
+                    <a class="page-link" onclick="showHero(1)">🔥 Phoenixa</a>
+                </li>
+                <li class="page-item" id="btn2">
+                    <a class="page-link" onclick="showHero(2)">🐦 Quailina</a>
+                </li>
+                <li class="page-item" id="btn3">
+                    <a class="page-link" onclick="showHero(3)">🦩 Flamingana</a>
+                </li>
+                <li class="page-item" id="btn4">
+                    <a class="page-link" onclick="showHero(4)">🦅 Falconela</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <script>
+        function showHero(number) {
+            // Hide all hero cards
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById("hero" + i).classList.remove("active");
+                document.getElementById("btn" + i).classList.remove("active");
+            }
+            // Show selected hero card
+            document.getElementById("hero" + number).classList.add("active");
+            document.getElementById("btn" + number).classList.add("active");
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
