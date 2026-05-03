@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrays Methods in Javascript</title>
+    </head>
+    <body>
+        <h1>Arrays Methods in Javascript</h1>
+        <p id="id1"></p>
+        <p id="id2"></p>
+        <p id="id3"></p>
+        <script>
+            var colours=["Blue","Yellow","Orange","Pink","Black"]
+            document.getElementById("id1").innerHTML=colours
+            
+            document.getElementById("id2").innerHTML=colours.join(" * ")
+            colours.pop()
+            document.getElementById("id3").innerHTML=colours
+        </script>
+    </body>
+</html>
