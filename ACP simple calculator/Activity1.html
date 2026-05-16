@@ -1,0 +1,90 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Calculator 🧮</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        h1 {
+            color: #ff6600;
+            text-align: center;
+        }
+        .calc-box {
+            background-color: #16213e;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 5px solid #ff6600;
+        }
+        .calc-box h3 {
+            color: #ff9933;
+            margin-bottom: 10px;
+        }
+        .result {
+            font-size: 24px;
+            color: #00ff99;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🧮 Simple Calculator</h1>
+
+    <!-- Addition -->
+    <div class="calc-box">
+        <h3>➕ Addition</h3>
+        <p id="addition"></p>
+    </div>
+
+    <!-- Subtraction -->
+    <div class="calc-box">
+        <h3>➖ Subtraction</h3>
+        <p id="subtraction"></p>
+    </div>
+
+    <!-- Multiplication -->
+    <div class="calc-box">
+        <h3>✖️ Multiplication</h3>
+        <p id="multiplication"></p>
+    </div>
+
+    <!-- Division -->
+    <div class="calc-box">
+        <h3>➗ Division</h3>
+        <p id="division"></p>
+    </div>
+
+    <script>
+        // Variables using var
+        var num1 = 936;
+        var num2 = 6;
+
+        // Addition
+        var addResult = num1 + num2;
+        document.getElementById("addition").innerHTML = 
+            num1 + " + " + num2 + " = <span class='result'>" + addResult + "</span>";
+
+        // Subtraction
+        var subResult = num1 - num2;
+        document.getElementById("subtraction").innerHTML = 
+            num1 + " - " + num2 + " = <span class='result'>" + subResult + "</span>";
+
+        // Multiplication
+        var mulResult = num1 * num2;
+        document.getElementById("multiplication").innerHTML = 
+            num1 + " × " + num2 + " = <span class='result'>" + mulResult + "</span>";
+
+        // Division
+        var divResult = num1 / num2;
+        document.getElementById("division").innerHTML = 
+            num1 + " ÷ " + num2 + " = <span class='result'>" + divResult + "</span>";
+    </script>
+
+</body>
+</html>
+
