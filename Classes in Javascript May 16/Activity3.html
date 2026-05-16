@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Static Methods In Javascript</title>
+    </head>
+    <body>
+        <h2>static Methods In Javascript</h2>
+        <p id="id1"></p>
+        <script>
+            class Student{
+                constructor(name){
+                    this.name =name
+                }
+                static welcome(x){
+                    return "Welcome "+ x.name
+                }
+            }
+let name1=new Student("Luna")
+document.getElementById("id1").innerHTML= Student.welcome(name1)
+        </script>
+    </body>
+</html>
