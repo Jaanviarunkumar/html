@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Multiplication Using Functions 🔢</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        h1 {
+            color: #ff6600;
+            text-align: center;
+        }
+        .result-box {
+            background-color: #16213e;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 5px solid #ff6600;
+            font-size: 20px;
+        }
+        .result-box h3 {
+            color: #ff9933;
+        }
+        .answer {
+            color: #00ff99;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔢 Multiplication Using Functions</h1>
+
+    <!-- Result Box 1 -->
+    <div class="result-box">
+        <h3>Multiplication of 6 and 10</h3>
+        <p id="result1"></p>
+    </div>
+
+    <!-- Result Box 2 -->
+    <div class="result-box">
+        <h3>Multiplication of 6 and 936</h3>
+        <p id="result2"></p>
+    </div>
+
+    <!-- Result Box 3 -->
+    <div class="result-box">
+        <h3>Multiplication of 10 and 936</h3>
+        <p id="result3"></p>
+    </div>
+
+    <script>
+
+        // Function Declaration
+        function multiply(num1, num2) {
+            return num1 * num2;
+        }
+
+        // Calling/Invoking the function with different numbers
+        var answer1 = multiply(6, 10);
+        var answer2 = multiply(6, 2);
+        var answer3 = multiply(10, 936);
+
+        // Displaying the results
+        document.getElementById("result1").innerHTML = 
+            "6 × 2 = <span class='answer'>" + answer1 + "</span>";
+
+        document.getElementById("result2").innerHTML = 
+            "6 × 936 = <span class='answer'>" + answer2 + "</span>";
+
+        document.getElementById("result3").innerHTML = 
+            "10 × 936 = <span class='answer'>" + answer3 + "</span>";
+
+    </script>
+
+</body>
+</html>
