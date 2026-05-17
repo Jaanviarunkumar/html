@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sum of Arguments & Trigonometric Degrees 🔢</title>
+    <style>
+        body {
+            background-color: #1a0000;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        h1 {
+            color: #ffd700;
+            text-align: center;
+        }
+        h2 {
+            color: #ff3333;
+            margin-top: 30px;
+        }
+        .result-box {
+            background-color: #2d0000;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 5px solid #ffd700;
+            font-size: 18px;
+        }
+        .result-box h3 {
+            color: #ffd700;
+        }
+        .answer {
+            color: #ff3333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .trig-answer {
+            color: #ffd700;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔢 Sum of Arguments & Trigonometric Degrees</h1>
+
+    <!-- Part 1: Sum of Arguments -->
+    <h2>➕ Part 1: Sum of Arguments</h2>
+
+    <div class="result-box">
+        <h3>Sum of 936, 6, 2 and 4</h3>
+        <p id="sumResult"></p>
+    </div>
+
+    <!-- Part 2: Trigonometric Degrees -->
+    <h2>📐 Part 2: Trigonometric Degrees</h2>
+
+    <div class="result-box">
+        <h3>Sin, Cos, Tan of 30 degrees</h3>
+        <p id="trig30"></p>
+    </div>
+
+    <div class="result-box">
+        <h3>Sin, Cos, Tan of 45 degrees</h3>
+        <p id="trig45"></p>
+    </div>
+
+    <div class="result-box">
+        <h3>Sin, Cos, Tan of 60 degrees</h3>
+        <p id="trig60"></p>
+    </div>
+
+    <script>
+
+        // ---- PART 1: Sum of Arguments ----
+        function sumOfArguments(num1, num2, num3, num4) {
+            return num1 + num2 + num3 + num4;
+        }
+
+        var totalSum = sumOfArguments(936, 6, 2, 4);
+
+        document.getElementById("sumResult").innerHTML =
+            "936 + 6 + 2 + 4 = <span class='answer'>" + totalSum + "</span>";
+
+        // ---- PART 2: Trigonometric Degrees ----
+        function degreesToRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+
+        // 30 degrees
+        var deg30 = degreesToRadians(30);
+        document.getElementById("trig30").innerHTML =
+            "Sin(30°) = <span class='trig-answer'>" + Math.sin(deg30).toFixed(2) + "</span><br>" +
+            "Cos(30°) = <span class='trig-answer'>" + Math.cos(deg30).toFixed(2) + "</span><br>" +
+            "Tan(30°) = <span class='trig-answer'>" + Math.tan(deg30).toFixed(2) + "</span>";
+
+        // 45 degrees
+        var deg45 = degreesToRadians(45);
+        document.getElementById("trig45").innerHTML =
+            "Sin(45°) = <span class='trig-answer'>" + Math.sin(deg45).toFixed(2) + "</span><br>" +
+            "Cos(45°) = <span class='trig-answer'>" + Math.cos(deg45).toFixed(2) + "</span><br>" +
+            "Tan(45°) = <span class='trig-answer'>" + Math.tan(deg45).toFixed(2) + "</span>";
+
+        // 60 degrees
+        var deg60 = degreesToRadians(60);
+        document.getElementById("trig60").innerHTML =
+            "Sin(60°) = <span class='trig-answer'>" + Math.sin(deg60).toFixed(2) + "</span><br>" +
+            "Cos(60°) = <span class='trig-answer'>" + Math.cos(deg60).toFixed(2) + "</span><br>" +
+            "Tan(60°) = <span class='trig-answer'>" + Math.tan(deg60).toFixed(2) + "</span>";
+
+    </script>
+
+</body>
+</html>
