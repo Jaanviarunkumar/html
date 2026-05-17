@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Evaluate Variables</title>
+    </head>
+    <body>
+        <h2>Click the button to evaluate Javascript Expressions.</h2>
+        <button onclick="myfunction()">Try it!</button>
+        <p id="result"></p>
+        <script>
+            function myfunction (){
+                var x=10
+                var y=20
+                var a=eval("x+y")+"<br>"
+                var b=eval("10/5")+"<br>"
+                var c=eval("y-x")+"<br>"
+                var sum=a+b+c 
+                document.getElementById("result").innerHTML=sum
+            }
+        </script>
+    </body>
+</html>
