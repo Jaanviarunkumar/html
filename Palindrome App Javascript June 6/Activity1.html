@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Palindrome App</title>
+    </head>
+    <Body>
+        <h2>Palindrome App</h2>
+        <Script>
+            function palindrome(x){
+                var input= x.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+                var reverseinput= input.split("").reverse().join("")
+                if (input==reverseinput){
+                    document.write("This is a Palindrome Value")
+                }
+else {
+    document.write("This is not a Palindrome Value")
+}
+            }
+            palindrome("madam and vivid")
+        </Script>
+    
+    </Body>
+</html>
