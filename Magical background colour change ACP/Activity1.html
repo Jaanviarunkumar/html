@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Seraphina the Colour Witch 🔮</title>
+    <style>
+        body {
+            background-color: #2d1b4e;
+            color: white;
+            font-family: Georgia, serif;
+            text-align: center;
+            padding: 30px;
+            transition: background-color 0.5s ease;
+        }
+        h1 {
+            color: #ffd700;
+            font-size: 42px;
+            text-shadow: 0 0 20px #cc66ff;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: #cc66ff;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Main layout */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        /* Image 1 - Main Seraphina */
+        .seraphina-main {
+            width: 280px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px #cc66ff;
+            border: 3px solid #ffd700;
+        }
+
+        /* Image 2 with speech bubble */
+        .seraphina-speech-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Speech bubble */
+        .speech-bubble {
+            background-color: #1a0040;
+            border: 2px solid #cc66ff;
+            border-radius: 20px;
+            padding: 20px 25px;
+            max-width: 300px;
+            position: relative;
+            box-shadow: 0 0 20px #cc66ff;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 20px 15px 0;
+            border-style: solid;
+            border-color: #cc66ff transparent transparent;
+        }
+        .speech-bubble p {
+            color: #ffd700;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+            font-style: italic;
+        }
+        .speech-bubble p span {
+            color: #cc66ff;
+            font-weight: bold;
+        }
+
+        /* Chibi witch image */
+        .seraphina-chibi {
+            width: 180px;
+            margin-top: 25px;
+            filter: drop-shadow(0 0 15px #cc66ff);
+        }
+
+        /* Colour display */
+        .color-display {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px 30px;
+            margin: 20px auto;
+            max-width: 400px;
+            font-size: 20px;
+            border: 2px solid #ffd700;
+        }
+        .color-display span {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* Magic button */
+        .magic-btn {
+            background: linear-gradient(135deg, #cc66ff, #ffd700);
+            color: #1a0040;
+            border: none;
+            padding: 18px 50px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px;
+            box-shadow: 0 0 30px #cc66ff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .magic-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px #ffd700;
+        }
+        .magic-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Click counter */
+        .counter {
+            color: #cc66ff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Sparkles */
+        .sparkles {
+            font-size: 30px;
+            margin: 10px 0;
+            animation: sparkle 1s infinite alternate;
+        }
+        @keyframes sparkle {
+            from { opacity: 0.5; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sparkles">✨🌟💫⭐🌟✨</div>
+
+    <h1>🔮 Seraphina 🔮</h1>
+    <div class="subtitle">The Magical Colour Witch</div>
+
+    <!-- Main Layout -->
+    <div class="main-container">
+
+        <!-- Image 1: Main Seraphina -->
+        <img src="seraphina1.png" alt="Seraphina" class="seraphina-main">
+
+        <!-- Image 2: Chibi Seraphina with speech bubble -->
+        <div class="seraphina-speech-container">
+            <div class="speech-bubble">
+                <p>
+                    ✨ <span>"Every colour holds a secret spell —</span>
+                    click and discover yours!"<br><br>
+                    🌈 <span>"My magic is infinite,</span>
+                    just like the colours of the universe!"<br><br>
+                    🎨 <span>"I don't use a wand —</span>
+                    I use colours to cast my spells!"
+                </p>
+            </div>
+            <img src="seraphina2.png" alt="Seraphina on broomstick" class="seraphina-chibi">
+        </div>
+
+    </div>
+
+    <!-- Current colour display -->
+    <div class="color-display">
+        Current Magic Colour: <span id="colorCode">#2d1b4e</span>
+    </div>
+
+    <!-- Magic Button -->
+    <button class="magic-btn" onclick="castSpell()">
+        🔮 Let the Magic Begin! 🔮
+    </button>
+
+    <!-- Click counter -->
+    <div class="counter" id="counter">
+        Spells cast: 0 ✨
+    </div>
+
+    <div class="sparkles">💜🔮💜🔮💜</div>
+
+    <script>
+        var spellCount = 0;
+
+        function castSpell() {
+            // Generate random colour
+            var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+
+            // Change background colour
+            document.body.style.backgroundColor = randomColor;
+
+            // Show the colour code
+            document.getElementById("colorCode").innerHTML = randomColor;
+
+            // Count spells
+            spellCount++;
+            document.getElementById("counter").innerHTML =
+                "Spells cast: " + spellCount + " ✨";
+        }
+    </script>
+
+</body>
+</html>
