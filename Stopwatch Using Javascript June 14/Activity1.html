@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stopwatch Using Javascript</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Stopwatch</h1>
+            <p><span id="seconds">00</span>:<span id="milliseconds">00</span></p>
+            <button id="button-start">Start</button>
+            <button id="button-stop">Stop</button>
+            <button id="button-reset">Reset</button>
+        </div>
+
+        <script>
+            var seconds = 0;
+            var milliseconds = 0;
+            var appendMilliseconds = document.getElementById("milliseconds");
+            var appendSeconds = document.getElementById("seconds");
+            var interval;
+
+            document.getElementById("button-start").onclick = function () {
+                clearInterval(interval);
+                interval = setInterval(startTimer, 10);
+            };
+
+            document.getElementById("button-stop").onclick = function () {
+                clearInterval(interval);
+            };
+
+            document.getElementById("button-reset").onclick = function () {
+                clearInterval(interval);
+                milliseconds = 0;
+                seconds = 0;
+                appendMilliseconds.innerHTML = "00";
+                appendSeconds.innerHTML = "00";
+            };
+
+            function startTimer() {
+                milliseconds++;
+
+                if (milliseconds <= 9) {
+                    appendMilliseconds.innerHTML = "0" + milliseconds;
+                }
+                if (milliseconds > 9) {
+                    appendMilliseconds.innerHTML = milliseconds;
+                }
+                if (milliseconds > 99) {
+                    seconds++;
+                    appendSeconds.innerHTML = seconds <= 9 ? "0" + seconds : seconds;
+                    milliseconds = 0;
+                    appendMilliseconds.innerHTML = "00";
+                }
+            }
+        </script>
+    </body>
+</html>
