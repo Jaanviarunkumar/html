@@ -37,5 +37,25 @@
             <a href="#">GALLERY</a>
             <a href="#">CONTACT_US</a>
         </div>
+        <section>
+            <img src="Image1.jpeg" alt="Image1" class="mySlides" style="height: 500px; width: 1200px;">
+            <img src="Image2.jpeg" alt="Image2" class="mySlides" style="height: 500px; width: 1200px;">
+            <img src="Image3.jpeg" alt="Image3" class="mySlides" style="height: 500px; width: 1200px;">
+        </section>
+        <script>
+            var myIndex = 0
+            slider()
+            function slider(){
+            var i
+            var x = document.getElementsByClassName("mySlides")
+            for(i=0;i < x.length;i++){
+                x[i].style.display="none"
+            }
+            myIndex++
+            if(myIndex>x.length){myIndex=1}
+            x[myIndex-1].style.display="block"
+            setTimeout(slider,3000)
+            }
+        </script>
     </body>
 </html>
