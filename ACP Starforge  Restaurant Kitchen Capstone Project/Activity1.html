@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Starforge Kitchen ⚔️</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * { scroll-behavior: smooth; }
+        
+        body {
+            background-color: #0a0010;
+            color: white;
+            font-family: Georgia, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ========= NAVBAR ========= */
+        .navbar {
+            background-color: #0a0010;
+            border-bottom: 2px solid #ffd700;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .navbar-brand {
+            color: #ffd700 !important;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: white !important;
+            margin: 0 8px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #ffd700 !important;
+            font-weight: bold;
+        }
+
+        /* ========= HOME SLIDER ========= */
+        #home { padding: 70px 0 0; }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            background-color: #000;
+            overflow: hidden;
+        }
+        .slide { display: none; width: 100%; }
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 750px;
+            object-fit: contain;
+            display: block;
+        }
+        .slide.active { display: block; }
+        .slide-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0,0,0,0.75);
+            color: #ffd700;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            border: 1px solid #ffd700;
+            white-space: nowrap;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255,215,0,0.3);
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            padding: 15px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 10;
+        }
+        .slider-btn:hover { background-color: rgba(255,215,0,0.6); }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+        .slider-dots {
+            text-align: center;
+            padding: 15px;
+            background-color: #0a0010;
+        }
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #444;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .dot.active { background-color: #ffd700; }
+
+        /* Welcome box */
+        .welcome-box {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0a0010, #1a0040);
+        }
+        .welcome-box h1 {
+            color: #ffd700;
+            font-size: 48px;
+            text-shadow: 0 0 20px #ffd700;
+            margin-bottom: 20px;
+        }
+        .welcome-box p {
+            color: #cccccc;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        .team-motto {
+            color: #ffd700;
+            font-size: 20px;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        /* ========= ABOUT ========= */
+        #about {
+            padding: 100px 50px 60px;
+            background: linear-gradient(135deg, #0a0010, #0d0020);
+        }
+        .about-title {
+            color: #ffd700;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px #ffd700;
+        }
+        .hero-about-card {
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        .phoenixa-card {
+            background: linear-gradient(135deg, #0a0030, #001a4d);
+            border: 2px solid #1a6fff;
+        }
+        .flamingana-card {
+            background: linear-gradient(135deg, #2d0020, #4d0030);
+            border: 2px solid #ff69b4;
+        }
+        .quailina-card {
+            background: linear-gradient(135deg, #1a0040, #2d0060);
+            border: 2px solid #9966cc;
+        }
+        .falconela-card {
+            background: linear-gradient(135deg, #1a0d00, #2d1a00);
+            border: 2px solid #00ced1;
+        }
+        .hero-about-card h2 { font-size: 26px; margin-bottom: 5px; }
+        .real-name { font-size: 14px; opacity: 0.7; margin-bottom: 15px; }
+        .about-section-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 5px;
+        }
+        .hero-code {
+            font-style: italic;
+            font-size: 15px;
+            margin-top: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* ========= HERO FOOD SECTIONS ========= */
+        .hero-section {
+            padding: 100px 30px 60px;
+        }
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-style: italic;
+            font-size: 15px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        /* Big hero food image */
+        .hero-food-image {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 40px;
+            box-shadow: 0 0 40px rgba(255,255,255,0.1);
+        }
+
+        /* Food cards grid */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .food-card {
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .food-card:hover { transform: scale(1.03); }
+        .food-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .food-card p { font-size: 13px; opacity: 0.8; line-height: 1.6; }
+
+        /* Phoenixa */
+        #phoenixa {
+            background: linear-gradient(135deg, #00001a, #000d33);
+        }
+        #phoenixa .section-title { color: #1a6fff; text-shadow: 0 0 15px #1a6fff; }
+        #phoenixa .section-subtitle { color: #99bbff; }
+        #phoenixa .hero-food-image { border: 2px solid #1a6fff; box-shadow: 0 0 40px rgba(26,111,255,0.3); }
+        #phoenixa .food-card {
+            background: linear-gradient(135deg, #000d33, #001a66);
+            border: 1px solid #1a6fff;
+        }
+        #phoenixa .food-card h3 { color: #1a6fff; }
+
+        /* Flamingana */
+        #flamingana {
+            background: linear-gradient(135deg, #1a0010, #330020);
+        }
+        #flamingana .section-title { color: #ff69b4; text-shadow: 0 0 15px #ff69b4; }
+        #flamingana .section-subtitle { color: #ffb3d9; }
+        #flamingana .hero-food-image { border: 2px solid #ff69b4; box-shadow: 0 0 40px rgba(255,105,180,0.3); }
+        #flamingana .food-card {
+            background: linear-gradient(135deg, #330020, #4d0030);
+            border: 1px solid #ff69b4;
+        }
+        #flamingana .food-card h3 { color: #ff69b4; }
+
+        /* Quailina */
+        #quailina {
+            background: linear-gradient(135deg, #0d0020, #1a0040);
+        }
+        #quailina .section-title { color: #9966cc; text-shadow: 0 0 15px #9966cc; }
+        #quailina .section-subtitle { color: #cc99ff; }
+        #quailina .hero-food-image { border: 2px solid #9966cc; box-shadow: 0 0 40px rgba(153,102,204,0.3); }
+        #quailina .food-card {
+            background: linear-gradient(135deg, #1a0040, #2d0060);
+            border: 1px solid #9966cc;
+        }
+        #quailina .food-card h3 { color: #9966cc; }
+
+        /* Falconela */
+        #falconela {
+            background: linear-gradient(135deg, #0d0800, #1a1000);
+        }
+        #falconela .section-title { color: #00ced1; text-shadow: 0 0 15px #00ced1; }
+        #falconela .section-subtitle { color: #99eeff; }
+        #falconela .hero-food-image { border: 2px solid #00ced1; box-shadow: 0 0 40px rgba(0,206,209,0.3); }
+        #falconela .food-card {
+            background: linear-gradient(135deg, #1a1000, #2d1a00);
+            border: 1px solid #00ced1;
+        }
+        #falconela .food-card h3 { color: #00ced1; }
+
+        /* ========= FOOD GALLERY ========= */
+        #gallery {
+            padding: 100px 30px 60px;
+            background: linear-gradient(135deg, #0a0010, #0d0020);
+        }
+        .gallery-title {
+            color: #ffd700;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px #ffd700;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .phoenixa-caption {
+            background: linear-gradient(transparent, rgba(26,111,255,0.85));
+            color: white;
+            border-bottom: 3px solid #1a6fff;
+        }
+        .flamingana-caption {
+            background: linear-gradient(transparent, rgba(255,105,180,0.85));
+            color: white;
+            border-bottom: 3px solid #ff69b4;
+        }
+        .quailina-caption {
+            background: linear-gradient(transparent, rgba(153,102,204,0.85));
+            color: white;
+            border-bottom: 3px solid #9966cc;
+        }
+        .falconela-caption {
+            background: linear-gradient(transparent, rgba(0,206,209,0.85));
+            color: white;
+            border-bottom: 3px solid #00ced1;
+        }
+
+        /* ========= CONTACT ========= */
+        #contact {
+            padding: 100px 30px 60px;
+            background: linear-gradient(135deg, #0a0010, #0d0020);
+            text-align: center;
+        }
+        .contact-title {
+            color: #ffd700;
+            font-size: 40px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px #ffd700;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+        .contact-box {
+            background-color: #1a0040;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #ffd700;
+            text-align: left;
+        }
+        .contact-box h3 {
+            color: #ffd700;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: #cccccc;
+            line-height: 1.9;
+            font-size: 14px;
+        }
+        .reservation-form {
+            background-color: #1a0040;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #ffd700;
+            text-align: left;
+        }
+        .reservation-form h3 {
+            color: #ffd700;
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .form-group { margin-bottom: 18px; }
+        .form-group label {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #0a0020;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #ffd700, #ff9900);
+            color: #0a0010;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover { transform: scale(1.03); }
+
+        /* ========= FOOTER ========= */
+        footer {
+            background-color: #050008;
+            border-top: 2px solid #ffd700;
+            text-align: center;
+            padding: 30px;
+            color: #ffd700;
+        }
+        footer p { margin: 5px 0; font-size: 14px; }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+
+    <!-- ========= NAVBAR ========= -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+        <div class="container-fluid">
+            <a class="navbar-brand">⚔️ STARFORGE KITCHEN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" href="#home">🏠 Home</a>
+                    <a class="nav-link" href="#about">📖 About</a>
+                    <a class="nav-link" href="#phoenixa">👑 Phoenixa</a>
+                    <a class="nav-link" href="#flamingana">🦩 Flamingana</a>
+                    <a class="nav-link" href="#quailina">🐦 Quailina</a>
+                    <a class="nav-link" href="#falconela">🦅 Falconela</a>
+                    <a class="nav-link" href="#gallery">🖼️ Gallery</a>
+                    <a class="nav-link" href="#contact">📬 Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========= HOME ========= -->
+    <section id="home">
+        <div class="slider-container">
+            <div class="slide active">
+                <!-- ⬆️ CHANGE THIS to your Phoenixa image filename! -->
+                <img src="phoenixa.png" alt="Phoenixa's Celestial Ember Feast">
+                <div class="slide-caption">👑🔥 Phoenixa's Celestial Ember Feast</div>
+            </div>
+            <div class="slide">
+                <!-- ⬆️ CHANGE THIS to your Flamingana image filename! -->
+                <img src="flamingana.png" alt="Heartfire Delights">
+                <div class="slide-caption">💖🦩 Heartfire Delights</div>
+            </div>
+            <div class="slide">
+                <!-- ⬆️ CHANGE THIS to your Quailina image filename! -->
+                <img src="quailina.png" alt="Featherlight Flavours">
+                <div class="slide-caption">🌙🐦 Featherlight Flavours</div>
+            </div>
+            <div class="slide">
+                <!-- ⬆️ CHANGE THIS to your Falconela image filename! -->
+                <img src="falconela.png" alt="Crystal Earth Fuel">
+                <div class="slide-caption">⚡🦅 Falconela's Crystal Earth Fuel</div>
+            </div>
+            <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+            <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
+
+        <div class="welcome-box">
+            <h1>⚔️ STARFORGE KITCHEN ⚔️</h1>
+            <p>Welcome to the most legendary dining experience in the universe! Powered by the Starlight Guardians of the Cosmic Wing Alliance, every meal here is crafted to fuel your powers, restore your energy, and ignite your inner flame!</p>
+            <div class="team-motto">"Different wings. One sky. One light." 🪽✨</div>
+        </div>
+    </section>
+
+    <!-- ========= ABOUT ========= -->
+    <section id="about">
+        <h2 class="about-title">📖 Meet the Starlight Guardians</h2>
+
+        <div class="hero-about-card phoenixa-card">
+            <h2 style="color:#1a6fff;">👑🔥 Phoenixa — The Eternal Flame Guardian</h2>
+            <div class="real-name">Real Name: Jaanvi | Classification: Ancient Cosmic Phoenix Guardian</div>
+            <div class="about-section-title" style="color:#1a6fff;">✨ Core Energy:</div>
+            <p>🌊 Water — Source of healing, balance, and emotional harmony. 🔥 Cosmic Flame — Sacred phoenix fire representing rebirth and hope. ✨ Celestial Magic — Ancient magic that powers all abilities.</p>
+            <div class="about-section-title" style="color:#1a6fff;">🌟 Role in Team:</div>
+            <p>Natural Leader and Symbol of Hope. Protects all realms, preserves balance, heals what is broken, and brings hope wherever darkness rises.</p>
+            <div class="about-section-title" style="color:#1a6fff;">⚠️ Weakness:</div>
+            <p>Uncontrolled Anger — Extreme anger causes powers to become unstable.</p>
+            <div class="hero-code" style="border-left:3px solid #1a6fff; color:#99bbff;">
+                💬 "True strength is not destruction. It is knowing when to protect, when to heal, and when to rise again."
+            </div>
+        </div>
+
+        <div class="hero-about-card flamingana-card">
+            <h2 style="color:#ff69b4;">🦩✨ Flamingana — The Glitter Flame Guardian</h2>
+            <div class="real-name">Real Name: Aarna | Classification: Flamingo Flame Guardian</div>
+            <div class="about-section-title" style="color:#ff69b4;">✨ Core Energy:</div>
+            <p>🔥 Fire — Source of power, passion, and energy. ✨ Glitter Magic — Magical sparkling energy used for attacks and illusions. 💖 Emotional Energy — Powers that grow stronger through feelings.</p>
+            <div class="about-section-title" style="color:#ff69b4;">🌟 Role in Team:</div>
+            <p>Heart of the Team and Spark of Hope. Spreads joy, courage, laughter, and light wherever darkness appears.</p>
+            <div class="about-section-title" style="color:#ff69b4;">⚠️ Weakness:</div>
+            <p>Emotional Chaos — Strong emotions can make her powers unpredictable.</p>
+            <div class="hero-code" style="border-left:3px solid #ff69b4; color:#ffb3d9;">
+                💬 "Even in chaos, there is light."
+            </div>
+        </div>
+
+        <div class="hero-about-card quailina-card">
+            <h2 style="color:#9966cc;">🐦🌙 Quailina — The Dream Wind Guardian</h2>
+            <div class="real-name">Real Name: Madhivadhana | Classification: Wind & Dream Guardian</div>
+            <div class="about-section-title" style="color:#9966cc;">✨ Core Energy:</div>
+            <p>💨 Wind — Source of movement, freedom, and guidance. 🌙 Dream Energy — Connects her to dreams, imagination, and intuition. ⭐ Courage — Gives strength to face fears and help others.</p>
+            <div class="about-section-title" style="color:#9966cc;">🌟 Role in Team:</div>
+            <p>Bringer of Courage and Dream Listener. Helps others find courage, hope, and confidence during difficult times.</p>
+            <div class="about-section-title" style="color:#9966cc;">⚠️ Weakness:</div>
+            <p>Fear & Self-Doubt — Fear can weaken her powers until she finds courage.</p>
+            <div class="hero-code" style="border-left:3px solid #9966cc; color:#cc99ff;">
+                💬 "Courage is moving forward, even when fear follows."
+            </div>
+        </div>
+
+        <div class="hero-about-card falconela-card">
+            <h2 style="color:#00ced1;">🦅⚔️ Falconela — The Earthquake Guardian</h2>
+            <div class="real-name">Real Name: Rithvika | Classification: Earth Falcon Warrior</div>
+            <div class="about-section-title" style="color:#00ced1;">✨ Core Energy:</div>
+            <p>🪨 Earth — Source of strength, stability, and protection. ⚡ Crystal Energy — Powers her armor, weapons, and defensive abilities. ❤️ Friendship — Gives her courage and emotional strength.</p>
+            <div class="about-section-title" style="color:#00ced1;">🌟 Role in Team:</div>
+            <p>Shield of Friendship and Guardian of the Mountains. Protects others and reminds everyone they are never alone.</p>
+            <div class="about-section-title" style="color:#00ced1;">⚠️ Weakness:</div>
+            <p>Loneliness — When isolated for too long, emotional rock prisons can trap her.</p>
+            <div class="hero-code" style="border-left:3px solid #00ced1; color:#99eeff;">
+                💬 "The earth is my strength, but friendship is my power."
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= PHOENIXA FOOD SECTION ========= -->
+    <section id="phoenixa" class="hero-section">
+        <h2 class="section-title">👑🔥 Phoenixa's Celestial Ember Feast</h2>
+        <p class="section-subtitle" style="color:#99bbff;">"Nourished by stars. Blessed by flame." | Guardian: Jaanvi</p>
+
+        <!-- BIG FOOD IMAGE -->
+        <!-- ⬆️ CHANGE "phoenixa.png" to your Phoenixa image filename! -->
+        <img src="phoenixa.png" alt="Phoenixa's Food" class="hero-food-image">
+
+        <div class="food-grid">
+            <div class="food-card">
+                <h3>🌊✨ Aqua Starfire Broth</h3>
+                <p>A warm, glowing blue soup infused with celestial herbs that heals and restores energy.</p>
+            </div>
+            <div class="food-card">
+                <h3>👑🔥 Celestial Queen's Ember Rice</h3>
+                <p>Golden rice cooked with cosmic spices, giving strength and balance to the guardian.</p>
+            </div>
+            <div class="food-card">
+                <h3>🌌🪽 Realm Guardian Dumplings</h3>
+                <p>Soft dumplings filled with magical ingredients that protect and empower.</p>
+            </div>
+            <div class="food-card">
+                <h3>♾️💙 Cosmic Balance Bowl</h3>
+                <p>A perfectly balanced bowl of grains, greens, and celestial sauce.</p>
+            </div>
+            <div class="food-card">
+                <h3>💧🔮 Phoenix Healing Elixir</h3>
+                <p>A refreshing blue drink that restores hope, energy, and inner peace.</p>
+            </div>
+            <div class="food-card">
+                <h3>🔥♾️ Eternal Ember Cake</h3>
+                <p>A golden cake with blue flame frosting — sweet, powerful, and unforgettable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= FLAMINGANA FOOD SECTION ========= -->
+    <section id="flamingana" class="hero-section">
+        <h2 class="section-title">💖🦩 Heartfire Delights</h2>
+        <p class="section-subtitle" style="color:#ffb3d9;">"Sweet. Sparkly. A little chaotic. 100% Flamingana!" | Guardian: Aarna</p>
+
+        <!-- BIG FOOD IMAGE -->
+        <!-- ⬆️ CHANGE "flamingana.png" to your Flamingana image filename! -->
+        <img src="flamingana.png" alt="Flamingana's Food" class="hero-food-image">
+
+        <div class="food-grid">
+            <div class="food-card">
+                <h3>✨🦩 Glitter Flame Pancakes</h3>
+                <p>Fluffy pink pancakes dusted with edible glitter and drizzled with strawberry flame syrup.</p>
+            </div>
+            <div class="food-card">
+                <h3>💖✨ Sparkle Heart Waffles</h3>
+                <p>Crispy waffles shaped like hearts, topped with pink cream and sparkling sugar.</p>
+            </div>
+            <div class="food-card">
+                <h3>🔥💖 Heartfire Lava Cake</h3>
+                <p>A warm chocolate cake with a gooey pink lava centre that explodes with sweetness.</p>
+            </div>
+            <div class="food-card">
+                <h3>🦩🌸 Flamingo Cotton Candy Shake</h3>
+                <p>A dreamy pink milkshake topped with fluffy cotton candy and rainbow sprinkles.</p>
+            </div>
+            <div class="food-card">
+                <h3>💖✨ Emotion Wave Cookies</h3>
+                <p>Soft, chewy cookies that change flavour with every bite — just like Flamingana's emotions!</p>
+            </div>
+            <div class="food-card">
+                <h3>🌈✨ Chaos Glitter Sundae</h3>
+                <p>A wild ice cream sundae with every topping imaginable — perfectly chaotic and delicious!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= QUAILINA FOOD SECTION ========= -->
+    <section id="quailina" class="hero-section">
+        <h2 class="section-title">🌙🐦 Featherlight Flavours</h2>
+        <p class="section-subtitle" style="color:#cc99ff;">"Light as a feather. Magical in every bite." | Guardian: Madhivadhana</p>
+
+        <!-- BIG FOOD IMAGE -->
+        <!-- ⬆️ CHANGE "quailina.png" to your Quailina image filename! -->
+        <img src="quailina.png" alt="Quailina's Food" class="hero-food-image">
+
+        <div class="food-grid">
+            <div class="food-card">
+                <h3>🌙💨 Moonwind Salad</h3>
+                <p>A light, refreshing salad with silver dressing and star-shaped croutons.</p>
+            </div>
+            <div class="food-card">
+                <h3>🍣🪶 Dream Feather Sushi</h3>
+                <p>Delicate sushi rolls as light as a feather, filled with calm and dreamy flavours.</p>
+            </div>
+            <div class="food-card">
+                <h3>☁️⭐ Courage Cloud Sandwich</h3>
+                <p>A soft, fluffy sandwich that gives courage with every bite.</p>
+            </div>
+            <div class="food-card">
+                <h3>⭐💨 Silver Star Smoothie</h3>
+                <p>A cool, minty smoothie that clears the mind and boosts confidence.</p>
+            </div>
+            <div class="food-card">
+                <h3>💨🌙 Whisper Wind Pasta</h3>
+                <p>Light, airy pasta tossed in a gentle moonwind herb sauce.</p>
+            </div>
+            <div class="food-card">
+                <h3>🌙🪶 Moonfeather Crepes</h3>
+                <p>Thin, delicate crepes filled with sweet cream and silver berry compote.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= FALCONELA FOOD SECTION ========= -->
+    <section id="falconela" class="hero-section">
+        <h2 class="section-title">⚡🦅 Falconela's Crystal Earth Fuel</h2>
+        <p class="section-subtitle" style="color:#99eeff;">"Fuel your strength. Rule the earth." | Guardian: Rithvika</p>
+
+        <!-- BIG FOOD IMAGE -->
+        <!-- ⬆️ CHANGE "falconela.png" to your Falconela image filename! -->
+        <img src="falconela.png" alt="Falconela's Food" class="hero-food-image">
+
+        <div class="food-grid">
+            <div class="food-card">
+                <h3>🪨⚡ Titan Rock Burger</h3>
+                <p>A massive, hearty burger packed with earthy flavours and crystal salt seasoning.</p>
+            </div>
+            <div class="food-card">
+                <h3>💎🌍 Crystal Earth Pizza</h3>
+                <p>A stone-baked pizza topped with mountain herbs and crystal cheese.</p>
+            </div>
+            <div class="food-card">
+                <h3>⛰️🦅 Mountain Warrior Stew</h3>
+                <p>A thick, powerful stew filled with root vegetables and earth spices.</p>
+            </div>
+            <div class="food-card">
+                <h3>🌍⚡ Earthquake Energy Bowl</h3>
+                <p>A protein-packed bowl with grains, crystals of sea salt, and falcon sauce.</p>
+            </div>
+            <div class="food-card">
+                <h3>🦅💪 Falcon Force Protein Shake</h3>
+                <p>A strong, energising shake that builds strength and endurance.</p>
+            </div>
+            <div class="food-card">
+                <h3>💎⚡ Crystal Armor Cheesecake</h3>
+                <p>A firm, rich cheesecake with a crystal sugar topping — strong and sweet!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= FOOD GALLERY ========= -->
+    <section id="gallery">
+        <h2 class="gallery-title">🖼️ Food Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <!-- ⬆️ CHANGE "phoenixa.png" to your Phoenixa image filename! -->
+                <img src="Phoenixa.png" alt="Phoenixa's Feast">
+                <div class="gallery-caption phoenixa-caption">👑🔥 Phoenixa's Celestial Ember Feast</div>
+            </div>
+            <div class="gallery-item">
+                <!-- ⬆️ CHANGE "flamingana.png" to your Flamingana image filename! -->
+                <img src="Flamingana.png" alt="Heartfire Delights">
+                <div class="gallery-caption flamingana-caption">💖🦩 Heartfire Delights</div>
+            </div>
+            <div class="gallery-item">
+                <!-- ⬆️ CHANGE "quailina.png" to your Quailina image filename! -->
+                <img src="Quailina.png" alt="Featherlight Flavours">
+                <div class="gallery-caption quailina-caption">🌙🐦 Featherlight Flavours</div>
+            </div>
+            <div class="gallery-item">
+                <!-- ⬆️ CHANGE "falconela.png" to your Falconela image filename! -->
+                <img src="Falconela.png" alt="Crystal Earth Fuel">
+                <div class="gallery-caption falconela-caption">⚡🦅 Falconela's Crystal Earth Fuel</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= CONTACT ========= -->
+    <section id="contact">
+        <h2 class="contact-title">📬 Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-box">
+                <h3>🏰 Our Location</h3>
+                <p>Starforge Kitchen<br>
+                Cosmic Wing Alliance HQ<br>
+                Starlight Galaxy, Universe 7<br>
+                Beyond the Celestial Realm ✨</p>
+            </div>
+            <div class="contact-box">
+                <h3>⏰ Opening Hours</h3>
+                <p>Monday - Friday: 10:00 AM - 10:00 PM<br>
+                Saturday - Sunday: 8:00 AM - 11:00 PM<br>
+                🌟 Guardian Days: Open 24/7!<br>
+                (When the team needs fuel!)</p>
+            </div>
+            <div class="contact-box">
+                <h3>📞 Contact Details</h3>
+                <p>📱 Phone: +∞ CWA-STARFORGE<br>
+                📧 Email: starforge@cwa.galaxy<br>
+                🌐 Website: www.starforgekitchen.cwa<br>
+                ✨ Instagram: @StarforgeKitchen</p>
+            </div>
+            <div class="contact-box">
+                <h3>💬 Our Promise</h3>
+                <p>"Whether you're a guardian or a visitor, every soul is welcome at Starforge Kitchen! Come fuel your powers with us!" 🌟⚔️</p>
+            </div>
+        </div>
+
+        <div class="reservation-form">
+            <h3>🍽️ Reserve Your Table</h3>
+            <div class="form-group">
+                <label>👤 Your Name:</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label>📧 Email:</label>
+                <input type="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label>📅 Date:</label>
+                <input type="date">
+            </div>
+            <div class="form-group">
+                <label>👥 Number of Guests:</label>
+                <input type="number" placeholder="How many guests?" min="1" max="20">
+            </div>
+            <div class="form-group">
+                <label>👑 Which Guardian's Section?</label>
+                <select>
+                    <option>👑🔥 Phoenixa's Celestial Ember Feast</option>
+                    <option>💖🦩 Flamingana's Heartfire Delights</option>
+                    <option>🌙🐦 Quailina's Featherlight Flavours</option>
+                    <option>⚡🦅 Falconela's Crystal Earth Fuel</option>
+                </select>
+            </div>
+            <button class="submit-btn">⚔️ Reserve My Table! 🌟</button>
+        </div>
+    </section>
+
+    <!-- ========= FOOTER ========= -->
+    <footer>
+        <p>⚔️ STARFORGE KITCHEN ⚔️</p>
+        <p>Powered by the Starlight Guardians | Cosmic Wing Alliance (CWA) 🌌🪽</p>
+        <p>"Different wings. One sky. One light." 🪽✨</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ========= SLIDER =========
+        var currentSlide = 0;
+        var slides = document.getElementsByClassName("slide");
+        var dots = document.getElementsByClassName("dot");
+
+        function showSlide(n) {
+            if (n >= slides.length) { currentSlide = 0; }
+            if (n < 0) { currentSlide = slides.length - 1; }
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+                dots[i].classList.remove("active");
+            }
+            slides[currentSlide].classList.add("active");
+            dots[currentSlide].classList.add("active");
+        }
+        function changeSlide(n) { currentSlide += n; showSlide(currentSlide); }
+        function goToSlide(n) { currentSlide = n; showSlide(currentSlide); }
+        setInterval(function() { currentSlide++; showSlide(currentSlide); }, 4000);
+
+        // ========= SCROLLSPY =========
+        window.addEventListener('scroll', function() {
+            var sections = document.querySelectorAll('section');
+            var navLinks = document.querySelectorAll('.nav-link');
+            var scrollPos = window.scrollY + 100;
+            sections.forEach(function(section) {
+                if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                    navLinks.forEach(function(link) {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + section.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // ========= RESERVATION BUTTON =========
+        document.querySelector('.submit-btn').addEventListener('click', function() {
+            alert('🌟 Your table has been reserved at Starforge Kitchen! The Starlight Guardians welcome you! ⚔️✨');
+        });
+    </script>
+</body>
+</html></html>
