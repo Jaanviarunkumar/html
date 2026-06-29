@@ -14,7 +14,7 @@
             .topnav a{
                 float: left;
                 color: #1affa3;
-                text-align: centre;
+                text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
                 font-size: 20px;
@@ -27,7 +27,52 @@
                 background-color: #ddd;
                 color: black;
             }
-            
+            .section{
+    text-align: center;
+    padding: 50px 80px;
+}
+.section-dark{
+    background-color: #282e34;
+    color: #ddd;
+}
+.Image1{
+    background-image: url("Image1.png");
+    min-height: 400px;
+}
+.Image2{
+    background-image:url("Image2.png") ;
+    min-height: 400px;
+}
+.Image3{
+    background-image:url("Image3.png");
+    min-height: 400px;
+}
+.Image1,.Image2,.Image3{
+    position: relative;
+    opacity: 0.70;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.pText{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+.pText .border-trans{
+    background-color: transparent;
+}
+.pText .border{
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+}
         </style>
     </head>
     <body>
@@ -38,10 +83,96 @@
             <a href="#">CONTACT_US</a>
         </div>
         <section>
-            <img src="Image1.png" alt="Image1" class="mySlides" style="height: 500px; width: 1200px;">
-            <img src="Image2.png" alt="Image2" class="mySlides" style="height: 500px; width: 1200px;">
-            <img src="Image3.png" alt="Image3" class="mySlides" style="height: 500px; width: 1200px;">
+            <img src="Image1.png" alt="Image1" class="mySlides" style="height: 500px; width: 100%;">
+            <img src="Image2.png" alt="Image2" class="mySlides" style="height: 500px; width: 100%;">
+            <img src="Image3.png" alt="Image3" class="mySlides" style="height: 500px; width: 100%;">
         </section>
+            <section class="section section-dark">
+            <h2>Topic 1</h2>
+            <p>What is a Capstone Project?
+
+A capstone project is a final project that brings together all the knowledge and skills learned during a course. It allows students to apply what they have learned to solve a real problem or create a useful product.
+
+Why is it called a "Capstone"?
+
+The word capstone comes from architecture. A capstone is the top stone placed on a building or arch to complete it. Similarly, a capstone project is the final piece that completes a student's learning journey.
+
+Why do we do a Capstone Project?
+To apply classroom knowledge in a practical way.
+To improve problem-solving and critical thinking skills.
+To develop creativity and innovation.
+To gain experience in planning, designing, and presenting a project.
+To prepare for higher studies and future careers.</p>
+        </section>
+        <div class="Image1">
+            <div class="pText">
+                <span class="border-trans">Image1 text</span>
+            </div>
+        </div>
+         <section class="section section-dark">
+            <h2>Topic 2</h2>
+            <p>About Our Project
+
+Our capstone project is a web application developed using:
+
+HTML – Creates the structure of the web page.
+CSS – Designs and styles the web page.
+JavaScript – Adds interactivity and dynamic features.
+What does "Future Innovation" mean?
+
+"Future Innovation" represents using technology and creative thinking to develop modern solutions. It symbolizes progress, new ideas, and continuous improvement through digital technology.
+
+Why are HTML, CSS, and JavaScript shown on the cover?
+
+They represent the three main technologies used to build our project:
+
+HTML is the foundation or skeleton of the website.
+CSS makes the website attractive and responsive.
+JavaScript makes the website interactive and functional.</p>
+        </section>
+        <div class="Image2">
+            <div class="pText">
+                <span class="border-trans">Image2 text</span>
+            </div>
+        </div>
+         <section class="section section-dark">
+            <h2>Topic 3</h2>
+            <p>Why are there coding symbols and technology graphics?
+
+The coding elements represent:
+
+Software development
+Programming
+Logical thinking
+Digital innovation
+Web development
+Modern technology
+What does the overall design represent?
+
+The modern blue theme, glowing technology elements, and coding graphics symbolize:
+
+Innovation
+Creativity
+Technology
+Teamwork
+Learning
+Building solutions for the future.
+About the Creator
+
+This Capstone Project was designed and developed by Jaanvi Arunkumar.
+
+Age: 11 years
+Class: VII
+
+This project reflects my creativity, problem-solving skills, and interest in web development. Using HTML, CSS, and JavaScript, I explored how technology can be used to create interactive and meaningful digital experiences."Every great innovation begins with a single idea. This project is one small step in my journey of learning, creating, and building for the future."
+
+Thank you for taking the time to view my project!</p>
+        </section>
+        <div class="Image3">
+            <div class="pText">
+                <span class="border-trans">Image3 text</span>
+            </div>
+        </div>
         <script>
             var myIndex = 0
             slider()
